@@ -74,10 +74,18 @@
          rot)))))
 
 (defun tmove (a v)
-  (nv+ (transform-location a) v)
+  (nv+ (transform-location a) (q*v (transform-rotation a) (v* (transform-scale a) v)))
   a)
 
 (defun tmove-by (a x y z)
+  (nv+ (transform-location a) (q*v (transform-rotation a) (nv* (vec x y z) (transform-scale a))))
+  a)
+
+(defun toffset (a v)
+  (nv+ (transform-location a) v)
+  a)
+
+(defun toffset-by (a x y z)
   (incf (vx (transform-location a)) x)
   (incf (vy (transform-location a)) y)
   (incf (vz (transform-location a)) z)

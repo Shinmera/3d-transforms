@@ -17,6 +17,8 @@
    #:tfrom-mat
    #:tmove
    #:tmove-by
+   #:toffset
+   #:toffset-by
    #:trotate
    #:trotate-by
    #:tscale
