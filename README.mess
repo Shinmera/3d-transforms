@@ -1,1 +1,41 @@
-## Don't look AAAAA
+## About 3d-transforms
+This is a library that uses the other 3d-* math libraries to present an encapsulation for a spatial transformation. It offers convenience functions for operating on such transformations and for converting between them and the alternative 4x4 matrix representation.
+
+Typically you will want a transform representation like this rather than a direct matrix representation, as it preserves the components of the transform and avoids issues like gimbal lock through the use of quaternions.
+
+## How To
+Load it through ASDF or Quicklisp
+
+::
+(ql:quickload :3d-transforms)
+(use-package :org.shirakumo.flare.transform)
+::
+
+Create a transform:
+
+::
+(transform)
+::
+
+And then move it around
+
+::
+(tmove-by * 1 2 3)
+(tscale-by * 2 1 1)
+(trotate-by * 3d-vectors:+vy+ PI)
+::
+
+If you would then like to transform a point from the space local to the transform to the global space, you can use ``t*p``
+
+::
+(t*p * (vec 1 2 3))
+::
+
+Alternatively if you need a matrix representation in order to, say, upload to the GPU, you can use ``tmat4``. If you need to stack transforms, you can do so by adding them together via ``t+`` or ``nt+``.
+
+Underneath a ``transform`` is just a combination of a ``tlocation`` vector, a ``tscaling`` vector, and a ``trotation`` quaternion. You can access and directly manipulate these values as well if needed.
+
+## Also See
+- "3d-vectors"(https://shinmera.github.io/3d-vectors) for Vector operations in conjunction with this library.
+- "3d-matrices"(https://shinmera.github.io/3d-matrices) for Matrix operations in conjunction with this library.
+- "3d-quaternions"(https://shinmera.github.io/3d-quaternions) for Quaternion operations in conjunction with this library.
