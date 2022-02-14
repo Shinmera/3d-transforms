@@ -6,9 +6,12 @@
 
 (defpackage #:org.shirakumo.flare.transform
   (:use #:cl #:org.shirakumo.flare.vector #:org.shirakumo.flare.matrix #:org.shirakumo.flare.quaternion)
+  (:import-from #:org.shirakumo.flare.vector
+                #:define-ofun #:ensure-float #:*float-type*)
   ;; ops.lisp
   (:export
    #:t+
+   #:nt+
    #:t*v
    #:t*p
    #:tinv
@@ -27,4 +30,7 @@
   (:export
    #:transform
    #:transform-p
-   #:copy-transform))
+   #:copy-transform
+   #:tlocation
+   #:tscaling
+   #:trotation))
