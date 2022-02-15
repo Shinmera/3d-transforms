@@ -8,11 +8,13 @@
   (:use #:cl #:org.shirakumo.flare.vector #:org.shirakumo.flare.matrix #:org.shirakumo.flare.quaternion)
   (:import-from #:org.shirakumo.flare.vector
                 #:define-ofun #:ensure-float #:*float-type*)
+  (:import-from #:org.shirakumo.flare.matrix #:~=)
   ;; ops.lisp
   (:export
    #:t+
    #:nt+
    #:t=
+   #:t~=
    #:t*v
    #:t*p
    #:tinv

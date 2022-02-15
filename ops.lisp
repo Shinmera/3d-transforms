@@ -21,11 +21,20 @@
   (nq* (trotation a) (trotation b))
   a)
 
-(declaim (type (function (transform transform) boolean) t=))
+(declaim (type (function (transform transform) boolean) t~=))
 (define-ofun t= (a b)
   (and (v= (tlocation a) (tlocation b))
        (v= (tscaling a) (tscaling b))
        (q= (trotation a) (trotation b))))
+
+(define-ofun t~= (a b)
+  (flet ((v~= (a b)
+           (and (~= (vx a) (vx b))
+                (~= (vy a) (vy b))
+                (~= (vz a) (vz b)))))
+    (and (v~= (tlocation a) (tlocation b))
+         (v~= (tscaling a) (tscaling b))
+         (qequal (trotation a) (trotation b)))))
 
 (declaim (type (function (transform vec3) vec3) t*v t*p))
 (declaim (inline t*v t*p))
@@ -83,7 +92,7 @@
                       (qmat3 (qinv rot)))))
       (with-fast-matref (n mat3 3)
         (transform
-         (vec (m 0 4) (m 1 4) (m 2 4))
+         (vec (m 0 3) (m 1 3) (m 2 3))
          (vec (n 0 0) (n 1 1) (n 2 2))
          rot)))))
 

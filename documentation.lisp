@@ -25,6 +25,8 @@ See TSCALING
 See TROTATION
 See T+
 See NT+
+See T=
+See T~=
 See T*V
 See T*P
 See TINV
@@ -101,6 +103,11 @@ See TRANSFORM (type)")
 
   (function t=
     "Compares both transforms component-wise and returns true if each component is v=/q=.
+
+See TRANSFORM (type)")
+
+  (function t~=
+    "Compares both transforms component-wise and returns true if each component is v~=/qequal.
 
 See TRANSFORM (type)")
   
