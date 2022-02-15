@@ -132,7 +132,7 @@
   (nq* (trotation a) q)
   a)
 
-(declaim (type (function (transform vec3 real) transform) trotate))
+(declaim (type (function (transform vec3 real) transform) trotate-by))
 (define-ofun trotate-by (a axis angle)
   (nq* (trotation a) (qfrom-angle axis angle))
   a)
