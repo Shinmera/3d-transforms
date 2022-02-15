@@ -21,6 +21,12 @@
   (nq* (trotation a) (trotation b))
   a)
 
+(declaim (type (function (transform transform) boolean) t=))
+(define-ofun t= (a b)
+  (and (v= (tlocation a) (tlocation b))
+       (v= (tscaling a) (tscaling b))
+       (q= (trotation a) (trotation b))))
+
 (declaim (type (function (transform vec3) vec3) t*v t*p))
 (declaim (inline t*v t*p))
 (define-ofun t*v (a v)

@@ -12,6 +12,7 @@
   (:export
    #:t+
    #:nt+
+   #:t=
    #:t*v
    #:t*p
    #:tinv

@@ -98,6 +98,11 @@ See TRANSFORM (type)")
 
 See T+
 See TRANSFORM (type)")
+
+  (function t=
+    "Compares both transforms component-wise and returns true if each component is v=/q=.
+
+See TRANSFORM (type)")
   
   (function t*v
     "Applies the transform to the given vector.
