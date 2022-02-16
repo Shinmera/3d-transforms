@@ -36,6 +36,11 @@
          (v~= (tscaling a) (tscaling b))
          (qequal (trotation a) (trotation b)))))
 
+(define-ofun t<- (target source)
+  (v<- (tlocation target) (tlocation source))
+  (v<- (tscaling target) (tscaling source))
+  (q<- (trotation target) (trotation source)))
+
 (declaim (type (function (transform vec3) vec3) t*v t*p))
 (declaim (inline t*v t*p))
 (define-ofun t*v (a v)

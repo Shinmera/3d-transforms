@@ -110,6 +110,11 @@ See TRANSFORM (type)")
     "Compares both transforms component-wise and returns true if each component is v~=/qequal.
 
 See TRANSFORM (type)")
+
+  (function t<-
+    "Copies the transform information into the target from the source.
+
+See TRANSFORM (type)")
   
   (function t*v
     "Applies the transform to the given vector.
