@@ -28,7 +28,10 @@
   :parent 3d-transforms
   :depends-on (struct)
   (is t~= (transform) (t+ (transform (vec 1 2 3)) (transform (vec -1 -2 -3))))
-  )
+  (is t~= (transform) (t+ (transform (vec 0 0 0) (vec 2 2 2)) (transform (vec 0 0 0) (vec 0.5 0.5 0.5))))
+  (is t~= (transform) (t+ (transform (vec 0 0 0) (vec 1 1 1) (qfrom-angle +vx+ PI)) (transform (vec 0 0 0) (vec 1 1 1) (qfrom-angle +vx+ (- PI)))))
+  (is t~= (transform) (t+ (transform (vec 0 0 0) (vec 1 1 1) (qfrom-angle +vx+ PI)) (transform (vec 0 0 0) (vec 1 1 1) (qfrom-angle +vx+ PI))))
+  (is t~= (transform) (t+ (transform (vec 0 0 0) (vec 1 1 1) (qfrom-angle +vx+ PI)) (transform (vec 0 0 0) (vec 1 1 1) (qfrom-angle +vx+ PI)))))
 
 (define-test translation
   :parent 3d-transforms

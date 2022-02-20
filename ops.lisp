@@ -12,13 +12,13 @@
    (nv+ (q*v (trotation a) (v* (tscaling a) (tlocation b)))
         (tlocation a))
    (v* (tscaling a) (tscaling b))
-   (q* (trotation a) (trotation b))))
+   (q* (trotation b) (trotation a))))
 
 (define-ofun nt+ (a b)
   (nv+ (tlocation a)
        (q*v (trotation a) (v* (tscaling a) (tlocation b))))
   (nv* (tscaling a) (tscaling b))
-  (nq* (trotation a) (trotation b))
+  (q<- (trotation a) (q* (trotation b) (trotation a)))
   a)
 
 (declaim (type (function (transform transform) boolean) t~=))
@@ -47,7 +47,7 @@
   (q*v (trotation a) (v* (tscaling a) v)))
 
 (define-ofun t*p (a v)
-  (nv+ (t*v a v) (tlocation a)))
+  (nv+ (q*v (trotation a) (v* (tscaling a) v)) (tlocation a)))
 
 (declaim (type (function (transform) transform) tinv))
 (define-ofun tinv (a)
