@@ -33,6 +33,8 @@ See TINV
 See TMIX
 See TMAT4
 See TFROM-MAT
+See TDQUAT
+See TFROM-DQUAT
 See TMOVE
 See TMOVE-BY
 See TOFFSET
@@ -160,6 +162,20 @@ See TRANSFORM (type)")
     "Returns a transform that represents the same linear transformation as the matrix, if possible.
 
 See MAT4 (type)
+See TRANSFORM (type)")
+
+  (function tqduat
+    "Returns a dual-quaternion matrix that encompasses the same translation and rotation as the transform.
+
+Note that the scaling is lost.
+
+See DQUAT (type)
+See TRANSFORM (type)")
+  
+  (function tfrom-dquat
+    "Returns a transform that represents the same linear transformation as the dual-quaternion.
+
+See DQUAT (type)
 See TRANSFORM (type)")
   
   (function tmove

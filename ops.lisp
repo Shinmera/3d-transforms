@@ -103,6 +103,21 @@
          (vec (n 0 0) (n 1 1) (n 2 2))
          rot)))))
 
+(declaim (type (function (transform &optional dquat) dquat) tdquat))
+(define-ofun tdquat (a &optional (dq (dquat)))
+  (let ((loc (tlocation a)))
+    (qsetf (qdual dq) (vx loc) (vy loc) (vz loc) 0))
+  (q<- (qreal dq) (trotation a))
+  (q<- (qdual dq) (q* (qreal dq) (qdual dq) 0.5))
+  dq)
+
+(declaim (type (function (dquat &optional transform) transform) tfrom-dquat))
+(define-ofun tfrom-dquat (dq &optional (a (transform)))
+  (q<- (trotation a) (qreal dq))
+  (vsetf (tscaling a) 1 1 1)
+  (v<- (tlocation a) (nq* (qconjugate (qreal dq)) (qdual dq) 2.0))
+  a)
+
 (declaim (type (function (transform vec3) transform) tmove toffset tscale))
 (declaim (inline tmove tmove-by toffset toffset-by tscale tscale-by trotate trotate-by))
 (define-ofun tmove (a v)
