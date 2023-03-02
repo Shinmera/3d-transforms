@@ -29,7 +29,10 @@
    #:trotate
    #:trotate-by
    #:tscale
-   #:tscale-by)
+   #:tscale-by
+   #:tx
+   #:ty
+   #:tz)
   ;; struct.lisp
   (:export
    #:transform

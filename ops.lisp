@@ -158,3 +158,12 @@
 (define-ofun trotate-by (a axis angle)
   (nq* (trotation a) (qfrom-angle axis angle))
   a)
+
+(define-ofun tx (a)
+  (t*v a +vx+))
+
+(define-ofun ty (a)
+  (t*v a +vy+))
+
+(define-ofun tz (a)
+  (t*v a +vz+))

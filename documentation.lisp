@@ -280,4 +280,25 @@ This is equivalent to
 
 See TROTATE
 See QUAT (type)
+See TRANSFORM (type)")
+
+  (function tx
+    "Returns a unit vector along X in the transform's local coordinate system.
+
+See T*N
+See 3D-VECTORS:+VX+
+See TRANSFORM (type)")
+
+  (function ty
+    "Returns a unit vector along Y in the transform's local coordinate system.
+
+See T*N
+See 3D-VECTORS:+VY+
+See TRANSFORM (type)")
+
+  (function ty
+    "Returns a unit vector along Y in the transform's local coordinate system.
+
+See T*N
+See 3D-VECTORS:+VY+
 See TRANSFORM (type)"))
