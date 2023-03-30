@@ -19,6 +19,7 @@
    #:t*v
    #:t*p
    #:tinv
+   #:t*p-inv
    #:tmix
    #:tmat4
    #:tfrom-mat

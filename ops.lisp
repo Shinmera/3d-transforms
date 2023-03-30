@@ -41,13 +41,18 @@
   (v<- (tscaling target) (tscaling source))
   (q<- (trotation target) (trotation source)))
 
-(declaim (type (function (transform vec3) vec3) t*v t*p))
+(declaim (type (function (transform vec3 &optional vec3) vec3) t*v t*p))
 (declaim (inline t*v t*p))
-(define-ofun t*v (a v)
-  (q*v (trotation a) (v* (tscaling a) v)))
+(define-ofun t*v (a v &optional (target (vec3)))
+  (v<- target v)
+  (nv* target (tscaling a))
+  (q*v (trotation a) target target))
 
-(define-ofun t*p (a v)
-  (nv+ (q*v (trotation a) (v* (tscaling a) v)) (tlocation a)))
+(define-ofun t*p (a v &optional (target (vec3)))
+  (v<- target v)
+  (nv* target (tscaling a))
+  (q*v (trotation a) target target)
+  (nv+ target (tlocation a)))
 
 (declaim (type (function (transform) transform) tinv))
 (define-ofun tinv (a)
@@ -62,6 +67,25 @@
        (q*v invrot (v* invscale (tlocation a) -1))
        invscale
        invrot))))
+
+(define-ofun t*p-inv (a v &optional (target (vec3)))
+  (flet ((save-invert (x)
+           (if (< (abs x) single-float-epsilon) 0.0 (/ x))))
+    ;; Implicitly compute and use TINV
+    (let* ((invrot (quat))
+           (scale (tscaling a))
+           (invscale (vec (save-invert (vx scale))
+                          (save-invert (vy scale))
+                          (save-invert (vz scale)))))
+      (declare (dynamic-extent invrot invscale))
+      (qinv (trotation a) invrot)
+      (v<- target v)
+      (nv* target invscale)
+      (q*v invrot target target)
+      ;; Re-use the invscale here as a temp vector for the invloc
+      (nv* invscale (tlocation a) -1)
+      (q*v invrot invscale invscale)
+      (nv+ target invscale))))
 
 (declaim (type (function (transform transform real) transform) tmix))
 (define-ofun tmix (from to x)
