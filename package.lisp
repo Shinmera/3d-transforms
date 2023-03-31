@@ -23,6 +23,8 @@
    #:tmix
    #:tmat4
    #:tfrom-mat
+   #:tdquat
+   #:tfrom-dquat
    #:tmove
    #:tmove-by
    #:toffset
