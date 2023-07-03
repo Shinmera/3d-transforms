@@ -1,9 +1,3 @@
-#|
- This file is a part of 3d-transforms
- (c) 2022 Shirakumo http://tymoon.eu (shinmera@tymoon.eu)
- Author: Nicolas Hafner <shinmera@tymoon.eu>
-|#
-
 (defpackage #:org.shirakumo.flare.transform
   (:use #:cl #:org.shirakumo.flare.vector #:org.shirakumo.flare.matrix #:org.shirakumo.flare.quaternion)
   (:import-from #:org.shirakumo.flare.vector
