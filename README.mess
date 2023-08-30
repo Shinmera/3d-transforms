@@ -1,3 +1,5 @@
+# This library has been superseded by "3d-math"(https://shinmera.github.io/3d-math)
+
 ## About 3d-transforms
 This is a library that uses the other 3d-* math libraries to present an encapsulation for a spatial transformation. It offers convenience functions for operating on such transformations and for converting between them and the alternative 4x4 matrix representation.
 
