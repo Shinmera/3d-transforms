@@ -4,9 +4,9 @@
   :author "Yukari Hafner <shinmera@tymoon.eu>"
   :maintainer "Yukari Hafner <shinmera@tymoon.eu>"
   :description "Tests for the 3d-transforms system."
-  :homepage "https://Shinmera.github.io/3d-transforms/"
-  :bug-tracker "https://github.com/Shinmera/3d-transforms/issues"
-  :source-control (:git "https://github.com/Shinmera/3d-transforms.git")
+  :homepage "https://shinmera.com/docs/3d-transforms/"
+  :bug-tracker "https://shinmera.com/project/3d-transforms/issues"
+  :source-control (:git "https://shinmera.com/project/3d-transforms.git")
   :serial T
   :components ((:file "test"))
   :depends-on (:3d-transforms :parachute)
